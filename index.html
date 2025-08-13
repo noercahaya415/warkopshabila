@@ -462,7 +462,7 @@
         <div class="form-group">
           <label>
             <input type="checkbox" id="tax-toggle" checked>
-            Pajak (10%)
+            Pajak (0%)
           </label>
         </div>
       </div>
@@ -726,7 +726,7 @@
       const deliveryFee = parseInt(document.getElementById('delivery-fee').value) || 0;
       const serviceFee = parseInt(document.getElementById('service-fee').value) || 0;
       const applyTax = document.getElementById('tax-toggle').checked;
-      const tax = applyTax ? subtotal * 0.1 : 0;
+      const tax = applyTax ? subtotal * 0 : 0;
 
       const total = subtotal + deliveryFee + serviceFee + tax;
 
@@ -795,7 +795,7 @@
         if (catatan) message += `\n*Catatan:* ${catatan}\n`;
         message += `\nTerima kasih!`;
         
-        waLink.href = `https://wa.me/6285880428160?text=${encodeURIComponent(message)}`;
+        waLink.href = `https://wa.me/6282128037436?text=${encodeURIComponent(message)}`;
         waLink.style.display = 'block';
       } else {
         waLink.style.display = 'none';
@@ -943,7 +943,7 @@
                  document.getElementById('subtotal').textContent
                    .replace("Rp ", "")
                    .replace(/\./g, '')
-               ) * 0.1 : 0,
+               ) * 0 : 0,
        total: parseFloat(
          document.getElementById('total').textContent
            .replace("Rp ", "")
@@ -973,4 +973,3 @@
   </script>
 </body>
 </html>
-

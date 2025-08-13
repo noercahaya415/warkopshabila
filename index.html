@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -603,32 +603,6 @@
       updateOrderSummary();
     }
 
-    function displayMenu() {
-  const menuList = document.getElementById('menu-list');
-  
-  // Hanya buat kategori jika belum ada
-  if (!document.getElementById('food-grid')) {
-    const foodSection = document.createElement('div');
-    foodSection.className = 'menu-category';
-    foodSection.innerHTML = '<h3>Makanan</h3><div class="menu-grid" id="food-grid"></div>';
-    menuList.appendChild(foodSection);
-    
-    menuData.makanan.forEach(item => {
-      document.getElementById('food-grid').appendChild(createMenuItem(item));
-    });
-  }
-  
-  if (!document.getElementById('drink-grid')) {
-    const drinkSection = document.createElement('div');
-    drinkSection.className = 'menu-category';
-    drinkSection.innerHTML = '<h3>Minuman</h3><div class="menu-grid" id="drink-grid"></div>';
-    menuList.appendChild(drinkSection);
-    
-    menuData.minuman.forEach(item => {
-      document.getElementById('drink-grid').appendChild(createMenuItem(item));
-    });
-  }
-}
     function createMenuItem(item) {
       const menuItem = document.createElement('div');
       menuItem.className = 'menu-item';
@@ -821,93 +795,125 @@
         if (catatan) message += `\n*Catatan:* ${catatan}\n`;
         message += `\nTerima kasih!`;
         
-        waLink.href = `https://wa.me/6289631677878?text=${encodeURIComponent(message)}`;
+        waLink.href = `https://wa.me/6282128037436?text=${encodeURIComponent(message)}`;
         waLink.style.display = 'block';
       } else {
         waLink.style.display = 'none';
       }
     }
 
-    // Data menu
+    // Data menu minuman saja (sudah diperbaiki syntax-nya)
     const menuData = {
       "minuman": [
         {
           "NAMA MENU": "Beng-Beng",
           "FOTO": "images/bengbeng6000.jpg",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Minuman coklat Beng-Beng yang creamy"
         },
-	{
+        {
           "NAMA MENU": "Chocolatos Coklat",
           "FOTO": "images/chocolatoscoklat6000.jpg",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Minuman coklat Chocolatos"
         },
-	{
+        {
           "NAMA MENU": "chocolatos Creamy",
           "FOTO": "images/chocolatoscreamy6000.jpg",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Minuman Chocolatos rasa creamy"
         },
-	{
+        {
           "NAMA MENU": "Chocolatos Matcha",
           "FOTO": "images/chocolatosmatcha6000.jpg",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Minuman Chocolatos rasa matcha"
         },
-	{
+        {
           "NAMA MENU": "Good Day Cappuccinno",
           "FOTO": "images/gooddaycappuccino6000.jpg",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Good Day rasa cappuccino"
         },
         {
           "NAMA MENU": "Good Day Carrebian Nut",
           "FOTO": "images/gooddaycarrebiannut6000.png",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Good Day rasa Carrebian Nut"
         },
         {
           "NAMA MENU": "Good Day Chococinno",
           "FOTO": "images/gooddaychococinno6000.png",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Good Day rasa Chococinno"
         },
         {
           "NAMA MENU": "Good Day Mocacinno",
           "FOTO": "images/gooddaymocacinno6000.png",
-          "HARGA": 6000
+          "HARGA": 6000,
+          "DESKRIPSI": "Good Day rasa Mocacinno"
         },
         {
           "NAMA MENU": "Good Day Original",
           "FOTO": "images/gooddayoriginal6000.png",
-          "HARGA": 6000
-        }
-	{
+          "HARGA": 6000,
+          "DESKRIPSI": "Good Day rasa original"
+        },
+        {
           "NAMA MENU": "Thai Tea",
           "FOTO": "images/thaitea.jpg",
-          "HARGA": 6000
-        }
+          "HARGA": 6000,
+          "DESKRIPSI": "Minuman Thai Tea segar"
+        },
         {
           "NAMA MENU": "Indocafe Coffemix",
           "FOTO": "images/indocafecoffemix5000.jpg",
-          "HARGA": 5000
+          "HARGA": 5000,
+          "DESKRIPSI": "Kopi Indocafe Coffemix"
         },
         {
           "NAMA MENU": "Jahe Susu",
           "FOTO": "images/jahesusu5000.jpg",
-          "HARGA": 5000
+          "HARGA": 5000,
+          "DESKRIPSI": "Jahe susu hangat"
         },
         {
           "NAMA MENU": "Liong Bulan",
           "FOTO": "images/liongbulan5000.jpg",
-          "HARGA": 5000
+          "HARGA": 5000,
+          "DESKRIPSI": "Minuman Liong Bulan"
         },
         {
           "NAMA MENU": "Luwak White Koffe",
           "FOTO": "images/luwakwhitekoffe5000.jpg",
-          "HARGA": 5000
-        }
-	{
+          "HARGA": 5000,
+          "DESKRIPSI": "Kopi Luwak White"
+        },
+        {
           "NAMA MENU": "Tea Jus",
           "FOTO": "images/teajus3000.jpg",
-          "HARGA": 3000
+          "HARGA": 3000,
+          "DESKRIPSI": "Teh jus segar"
         }
       ]
     };
+
+    // Fungsi displayMenu yang disederhanakan (hanya untuk minuman)
+    function displayMenu() {
+      const menuList = document.getElementById('menu-list');
+      
+      // Hanya buat grid untuk minuman
+      if (menuData.minuman && !document.getElementById('drink-grid')) {
+        const drinkSection = document.createElement('div');
+        drinkSection.className = 'menu-category';
+        drinkSection.innerHTML = '<h3>Minuman</h3><div class="menu-grid" id="drink-grid"></div>';
+        menuList.appendChild(drinkSection);
+        
+        menuData.minuman.forEach(item => {
+          document.getElementById('drink-grid').appendChild(createMenuItem(item));
+        });
+      }
+    }
     
     document.addEventListener('DOMContentLoaded', () => {
       displayMenu();
